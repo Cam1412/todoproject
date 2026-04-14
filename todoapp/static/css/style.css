@@ -1,0 +1,111 @@
+/* style generaux */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+/* FIN Des STYLES GENERAUX */
+
+/* STYLES POUR LE NAVBAR */
+body nav{
+    background-color: #433a3a;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    color: rgb(250, 189, 6);
+}
+
+nav .logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+body nav .nav-title{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px ;
+}
+/* FIN DES STYLES POUR LE NAVBAR */
+
+/* STYLES POUR LE TITRE DE LA PAGE */
+
+body .mon-titre  h1{
+    color: brown;
+    text-align: center;
+    padding-top: 1rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+/* FIN DU STYLES POUR LE TITRE DE LA PAGE */
+
+
+/* STYLES POUR LE CONTENU DE LA PAGE */
+.contenu-page {
+    width: 60%;
+    max-height: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgb(13, 156, 174);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.separator{
+    margin-bottom: 1rem;
+}
+
+/* STYLES POUR LE TITRE DU CONTENU */
+.contenu-page .mon-titre{
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+/* FIN DES STYLES POUR LE TITRE DU CONTENU */
+
+.contenu-page .form-container{
+    margin-bottom: 1.5rem;
+}
+
+.contenu-page .form-container button {
+    border: none;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    cursor: pointer;
+}
+
+/* STYLE DE NOTRE BADGE POUR LE STATUT */
+.vert { color: rgb(5, 244, 5); }
+.rouge { color: red; }
+.orange { color: rgb(255, 179, 38); }
+/* FIN DU STYLES POUR LE STATUT */
+
+
+body .footer {
+    background-color: #433a3a;
+    height: 22px;
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+
+

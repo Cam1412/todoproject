@@ -1,0 +1,79 @@
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %} App Gestion des Tâches</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- balise de navigation -->
+    <nav>
+        <img src="{% static 'images/logo.png' %}" alt="Logo de l'application" class="logo"> <p class="nav-title">AGT</p>
+    </nav>
+    
+    <!-- balise de titre -->
+    <div class="mon-titre">
+        <h1>Bienvenue sur mon App de Gestion de Tâches</h1>
+    </div>
+
+    <!-- Affichage des messages de succès ou d'erreur -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="dismiss" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+    <!-- balise de contenu dynamique -->
+    <div class="contenu-page">
+        {% block content %}
+            <h2 class="mon-titre">Mes tâches à faire</h2>
+            <hr class="separator">
+            <!-- Affichage du formulaire pour ajouter une tâche -->
+            
+            <form method="post" class="form-container">
+                {% csrf_token %}
+                <p>{{tache_form.titre.label_tag}} {{ tache_form.titre }}</p>
+                <p>{{tache_form.description.label_tag}} {{ tache_form.description }}</p>
+                <p>{{tache_form.date_creation.label_tag}} {{ tache_form.date_creation }}</p>
+                <p>{{tache_form.date_echeance.label_tag}} {{ tache_form.date_echeance }}</p>
+                <p>{{tache_form.status.label_tag}} {{ tache_form.status }}</p>
+                <button type="submit" class="btn btn-primary">Ajouter une tâche</button>
+            </form>
+
+            <!-- Affichage de la liste des tâches -->
+            <ol>
+                {% for tache in taches %}<br>
+                <li>
+                    {{ tache.titre }} |
+                    {% if tache.status == "Terminée" %}
+                            <span class="vert">{{ tache.status }}</span>
+                        {% elif tache.status == "Annulée" %}
+                            <span class="rouge">{{ tache.status }}</span>
+                        {% else %}
+                            <span class="orange">{{ tache.status }}</span>
+                    {% endif %}|
+                    <a href="{% url 'modifier-tache' tache.id %}" class="btn btn-warning">Modifier</a> | <a href="{% url 'supprimer-tache' tache.id %}" class="btn btn-danger">Supprimer</a>
+                </li>
+                {% endfor %}
+            </ol>
+        {% endblock %}
+    </div>
+
+
+
+    <!-- balise de pied de page -->
+    <footer class="footer">
+        <p>&copy; 2026 Mon Site Web - Tous droits réservés - noelDeve</p>
+    </footer>
+
+</body>
+</html>
