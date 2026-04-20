@@ -3,9 +3,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
-    
+    font-family: 'Times New Roman', Times, serif; 
 }
+
 
 /* FIN Des STYLES GENERAUX */
 
@@ -55,6 +55,7 @@ body .mon-titre  h1{
     background-color: rgb(13, 156, 174);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #fff;
 }
 
 .separator{
@@ -92,6 +93,11 @@ body .mon-titre  h1{
 .rouge { color: red; }
 .orange { color: rgb(255, 179, 38); }
 /* FIN DU STYLES POUR LE STATUT */
+
+/* STYLE POUR LES LABELS NAME */
+.contenu-page .form-container label {
+    color: black;
+}
 
 
 body .footer {
