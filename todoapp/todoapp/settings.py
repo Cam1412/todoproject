@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
-from pathlib import Path
 import os
+from pathlib import Path
+
 from decouple import config # pour utiliser la bibliothèque python-decouple pour gérer les variables d'environnement
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'todoapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")], # pour indiquer à Django où se trouvent les templates de notre projet
+        'DIRS': [BASE_DIR, "templates"], # pour indiquer à Django où se trouvent les templates de notre projet
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,8 +128,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")] # pour indiquer à Django où se trouvent les fichiers statiques (CSS, JS, images) de notre projet
-STATICFILES_ROOT = os.path.join(BASE_DIR, "staticfiles") # pour indiquer à Django où collecter les fichiers statiques lors de la commande `collectstatic` en production
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+] # pour indiquer à Django où se trouvent les fichiers statiques de notre projet (par exemple, les fichiers CSS, JavaScript et les images que nous avons créés pour notre application). En développement, on peut laisser cette variable vide ou la configurer pour qu'elle pointe vers un répertoire temporaire. En production, il faudra utiliser la commande `collectstatic` pour collecter tous les fichiers statiques dans un répertoire spécifique (par exemple, `staticfiles`) et configurer la variable `STATICFILES_ROOT` pour indiquer à Django où se trouvent ces fichiers collectés.
+
+STATIC_ROOT = BASE_DIR / "staticfiles"  # pour indiquer à Django où se trouvent les fichiers statiques collectés par la commande `collectstatic` en production. En développement, on peut laisser cette variable vide ou la configurer pour qu'elle pointe vers un répertoire temporaire.
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
